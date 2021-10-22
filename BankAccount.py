@@ -13,7 +13,7 @@ class BankAccount:
 
     def withdraw(self, amount):
         if self.balance > amount:
-            after_wd_amount = amount - self.balance
+            after_wd_amount =self.balance - amount 
             print(f'Amount deposited: ${amount}\n new balance: ${after_wd_amount}')
         else:
             print(f'Insufficient funds. $10 overdraft fee has been charged to your account. Current Balance:{self.balance - 10 } ')
@@ -39,5 +39,7 @@ class BankAccount:
         #Balance: $100.00
         pass
 
-myAccount = BankAccount("Rae Porhammer", 86753090, 37.90)
-myAccount.deposit(23.17)
+testAccount = BankAccount("Rae Porhammer", 86753090, 37.90)
+#testAccount.deposit(23.17)
+#testAccount.withdraw(42)
+testAccount.withdraw(7.75)
