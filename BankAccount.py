@@ -5,11 +5,18 @@ class BankAccount:
         self.balance = balance
 
     def deposit(self, amount):
+        after_depo_amount = amount + self.balance
+        print(f'Amount deposited: ${amount}\n new balance: ${after_depo_amount}')
+        return after_depo_amount
         #adds amount to balance
         #“Amount deposited: $X.XX new balance: $Y.YY”
-        pass
 
     def withdraw(self, amount):
+        if self.balance > amount:
+            after_wd_amount = amount - self.balance
+            print(f'Amount deposited: ${amount}\n new balance: ${after_wd_amount}')
+        else:
+            print(f'Insufficient funds. $10 overdraft fee has been charged to your account. Current Balance:{self.balance - 10 } ')
         #subtracts amount from balance
         #“Amount withdrawn: $X.XX new balance: $Y.YY”
         #user tries to withdraw an amount greater than balance, ”Insufficient funds.”
@@ -20,7 +27,8 @@ class BankAccount:
         print(f'Your balance is currently {self.balance}')
         return self.balance
 
-    def add_interest(self):
+    def add_interest(self, months):
+
         #adds interest to balance
         #monthly interest (interest = balance *  0.00083 )
         pass
@@ -30,4 +38,6 @@ class BankAccount:
         #Account No.: ****5678
         #Balance: $100.00
         pass
-    
+
+myAccount = BankAccount("Rae Porhammer", 86753090, 37.90)
+myAccount.deposit(23.17)
