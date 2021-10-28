@@ -5,14 +5,14 @@ class BankAccount:
         self.balance = balance
 
     def deposit(self, amount):
-        after_depo_amount = amount + self.balance
-        print(f'Amount deposited: ${amount}\n new balance: ${after_depo_amount}')
-        return after_depo_amount
+        self.balance += amount 
+        print(f'Amount deposited: ${amount}\nNew balance: ${self.balance}')
+        return self.balance
 
     def withdraw(self, amount):
         if self.balance > amount:
-            after_wd_amount =self.balance - amount 
-            print(f'Amount deposited: ${amount}\n new balance: ${after_wd_amount}')
+            self.balance -= amount 
+            print(f'Amount withdrawn: ${amount}\nNew balance: ${self.balance}')
         else:
             print(f'Insufficient funds. $10 overdraft fee has been charged to your account. Current Balance:{self.balance - 10 } ')
 
@@ -22,11 +22,10 @@ class BankAccount:
 
     def add_interest(self, months):
         interest = months * 0.00083
-        print(f'Current balance plus interest: {self.balance + interest}')
+        self.balance += int((interest * self.balance * 100) + .5) / 100 #rounds to nearest hundreth. hundredth? hundrethd. its more complicated than it needs to be i know
+        print(f'Current balance plus interest: {self.balance}')
         
         #adds interest to balance
-        #monthly interest (interest = balance *  0.00083 )
-        pass
     
     def print_statement(self):
         num = self.account_number[4:8]
@@ -35,11 +34,20 @@ class BankAccount:
         #Account No.: ****5678
         #Balance: $100.00
 
-testAccount = BankAccount("Rae Porhammer", "86753592", 37.90)
+#testAccount = BankAccount("Rae Porhammer", "86753592", 37.90)
 #testAccount.deposit(23.17)
 #testAccount.withdraw(42)
 #testAccount.withdraw(7.75)
 #testAccount.get_balance()
 #testAccount.add_interest(14)
-testAccount.print_statement()
+#testAccount.print_statement()
+Mitchell = BankAccount('Mitchell Hudson', '3141592', 0)
+Mitchell.deposit(400000)
+Mitchell.print_statement()
+print('--------------------------')
+Mitchell.add_interest(17)
+Mitchell.print_statement()
+print('--------------------------')
+Mitchell.withdraw(150)
+Mitchell.print_statement()
 
